@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "lint": "npx eslint . --max-warnings=0"
   },
   "keywords": [],
   "author": "",
