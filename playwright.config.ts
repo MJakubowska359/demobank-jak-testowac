@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -21,7 +21,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        baseURL: 'https://demobank.jaktestowac.pl',
+        browserName: 'chromium',
+      },
     },
   ],
 });
