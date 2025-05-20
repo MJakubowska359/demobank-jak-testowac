@@ -12,9 +12,12 @@ export class LoginPage extends BasePage {
   nextButton = this.page.getByRole('button', { name: 'dalej' });
   passwordInput = this.page.locator('#login_password');
   loginButton = this.page.getByRole('button', { name: 'zaloguj się' });
+  logoutButton = this.page.locator('#log_out');
 
   // Locators for assertions
   error = this.page.locator('.error');
+  userName = this.page.locator('#user_name');
+  header = this.page.getByRole('heading');
 
   async pressEnterInIdField(): Promise<void> {
     await this.idInput.press('Enter');
@@ -42,5 +45,17 @@ export class LoginPage extends BasePage {
     await this.page.waitForTimeout(2000);
     await this.passwordInput.pressSequentially(login.password);
     await this.passwordInput.press('Tab');
+  }
+
+  async login(login: LoginUserModel): Promise<void> {
+    await this.idInput.pressSequentially(login.id);
+    await this.nextButton.click();
+    await this.page.waitForTimeout(2000);
+    await this.passwordInput.pressSequentially(login.password);
+    await this.loginButton.click();
+  }
+
+  async clickLogoutButton(): Promise<void> {
+    await this.logoutButton.click();
   }
 }
