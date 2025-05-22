@@ -1,6 +1,7 @@
 import { LoginPage } from '../../pages/login.page';
 import { NavPage } from '../../pages/nav.page';
 import { PhonePage } from '../../pages/phone.page';
+import { heightAmount, lowAmount } from '../../test-data/form_data';
 import { correctLogin } from '../../test-data/login_data';
 import { expect, test } from '@playwright/test';
 
@@ -35,7 +36,7 @@ test.describe('Validations in top-up form', () => {
     const expectedError = 'kwota musi być większa od 10';
 
     // Act
-    await phonePage.fillTooLowAmountInAmountField();
+    await phonePage.fillTooLowAmountInAmountField(lowAmount);
 
     // Assert
     await expect(phonePage.error).toHaveText(expectedError);
@@ -46,7 +47,7 @@ test.describe('Validations in top-up form', () => {
     const expectedError = 'kwota musi być mniejsza od 50';
 
     // Act
-    await phonePage.fillTooHeightAmountInAmountField();
+    await phonePage.fillTooHeightAmountInAmountField(heightAmount);
 
     // Assert
     await expect(phonePage.error).toHaveText(expectedError);
