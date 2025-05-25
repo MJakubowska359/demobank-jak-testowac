@@ -5,10 +5,17 @@ export class NavPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
-  // Locators for navigation form
-  topUpPhone = this.page.getByRole('link', { name: 'doładowanie telefonu' });
+  // Locators for bookmarks
+  topUpPhoneBookmark = this.page.getByRole('link', {
+    name: 'doładowanie telefonu',
+  });
+  reportsBookmark = this.page.getByRole('link', { name: 'raporty' });
 
-  async clickTopUpPhoneButton(): Promise<void> {
-    await this.topUpPhone.click();
+  async clickTopUpPhoneBookmark(): Promise<void> {
+    await this.topUpPhoneBookmark.click();
+  }
+
+  async clickReportBookmark(): Promise<void> {
+    await this.reportsBookmark.first().click();
   }
 }
