@@ -14,4 +14,5 @@ export class MainPage extends BasePage {
   // Locators for assertions
   seconds = this.page.locator('#countdown_seconds');
   minutes = this.page.locator('#countdown_minutes');
+  newMessage = this.page.locator('#show_messages');
 }
