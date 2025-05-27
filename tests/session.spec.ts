@@ -30,7 +30,7 @@ test.describe('Check refresh session', () => {
       // Act
       await page.waitForTimeout(5_000);
       await expect(mainPage.seconds).toHaveText(expectedSecondBeforeRefresh);
-      await navPage.clickTopUpPhoneButton();
+      await navPage.clickTopUpPhoneBookmark();
 
       // Assert
       await expect(mainPage.minutes).toHaveText(expectedMinutesAfterRefresh);
