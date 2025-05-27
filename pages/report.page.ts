@@ -12,6 +12,7 @@ export class ReportPage extends BasePage {
     name: 'Pobierz raport z ostatniego roku',
   });
   uploadTextFileButton = this.page.locator('div #my_file_1');
+  uploadJsonFileButton = this.page.locator('div #my_file_2');
   sendButton = this.page.getByRole('button', { name: 'Prześlij' });
 
   // Locators for assertions
@@ -24,5 +25,10 @@ export class ReportPage extends BasePage {
   async uploadTextFile(file: PathModel): Promise<void> {
     await this.uploadTextFileButton.setInputFiles(file.path);
     await this.sendButton.first().click();
+  }
+
+  async uploadJsonFile(file: PathModel): Promise<void> {
+    await this.uploadJsonFileButton.setInputFiles(file.path);
+    await this.sendButton.nth(1).click();
   }
 }
