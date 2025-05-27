@@ -14,7 +14,6 @@ export class PhonePage extends BasePage {
 
   // Locators for assertions
   error = this.page.locator('.error');
-  newMessage = this.page.locator('#show_messages');
 
   async clickTopUpPhoneButton(): Promise<void> {
     await this.topUpPhoneButton.click();
