@@ -15,3 +15,11 @@ export const jsonFile: PathModel = {
 export const jsonFileName: NameModel = {
   name: 'exampleJsonFile.json',
 };
+
+export const downloadedTxtReport: NameModel = {
+  name: 'proposed_file_name.txt',
+};
+
+export const downloadedZipReport: NameModel = {
+  name: 'proposed_file_name.zip',
+};

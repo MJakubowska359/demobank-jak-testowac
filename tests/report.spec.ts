@@ -3,6 +3,8 @@ import { MainPage } from '../pages/main.page';
 import { NavPage } from '../pages/nav.page';
 import { ReportPage } from '../pages/report.page';
 import {
+  downloadedTxtReport,
+  downloadedZipReport,
   jsonFile,
   jsonFileName,
   textFile,
@@ -74,6 +76,39 @@ test.describe('Check reports', () => {
 
       // Assert
       await expect(mainPage.newMessage).toHaveText(expectedMessage);
+    },
+  );
+
+  test(
+    'Should be able to download report as text file',
+    { tag: ['@report', '@smoke'] },
+    async () => {
+      // Arrange
+      const expectedHeader = 'Raport półroczny';
+
+      // Act
+      await expect(reportPage.header.nth(1)).toHaveText(expectedHeader);
+      await reportPage.downloadReportAsTxtFile();
+
+      // Assert
+      await reportPage.checkDownloadedReportAsTxtFile(downloadedTxtReport);
+    },
+  );
+
+  test(
+    'Should be able to download report as zip file',
+    { tag: ['@report', '@smoke'] },
+    async () => {
+      // Arrange
+      const expectedReportName = 'report-1.zip';
+
+      // Act
+      const reportAttribute = await reportPage.getReportHref();
+      expect(reportAttribute).toContain(expectedReportName);
+      await reportPage.downloadReportAsZipFile();
+
+      // Assert
+      await reportPage.checkDownloadedReportAsZipFile(downloadedZipReport);
     },
   );
 });
